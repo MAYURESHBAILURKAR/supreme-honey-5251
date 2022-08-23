@@ -458,7 +458,7 @@ const NavBarMenu = () => {
     TrendingNow: ["Best of British Brands"],
   };
 
-  console.log(SummerShop.TopCategories);
+  //   console.log(SummerShop.TopCategories);
   return (
     <div className={styles.NavMenMainCont}>
       <div className={styles.NavMenInnerCont}>

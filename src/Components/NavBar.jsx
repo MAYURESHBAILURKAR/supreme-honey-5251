@@ -37,6 +37,7 @@ const Navbar = () => {
           <img
             src="https://s1.thcdn.com/enterprise/assets/skstr-global-113e023e-ecc9-45df-abad-eb92ce1956c9-logo-default.svg"
             alt=""
+            onClick={() => handleOnClick("/")}
           />
         </div>
         <div className={styles.NavInputdiv}>
@@ -127,9 +128,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="NavHr">
-        <hr />
+        <hr style={{ border: "1px solid #333" }} />
       </div>
-      <NavBarMenu />
+      <div>{/* <NavBarMenu /> */}</div>
     </div>
   );
 };

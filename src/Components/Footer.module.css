@@ -1,0 +1,31 @@
+.footer_innerCont {
+  /* border: 1px solid red; */
+  width: 70%;
+  margin: auto;
+}
+.footer_topCont {
+  /* border: 1px solid red; */
+  display: flex;
+  text-align: left;
+}
+.footer_topCont > div {
+  /* border: 1px solid red; */
+  width: 50%;
+}
+.footer_topContdiv_2 {
+  text-align: left;
+}
+.footer_topContdiv_2 > div:nth-child(2) {
+  display: flex;
+  margin: 5px 0;
+}
+
+.footer_bottomCont {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.footer_bottomCont > div {
+  padding: 20px;
+}

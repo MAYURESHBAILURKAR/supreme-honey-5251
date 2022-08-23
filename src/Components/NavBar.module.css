@@ -1,34 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+
 .NavMainCont {
   height: 100px;
   /* border: 1px red solid; */
+  font-family: "Lato", sans-serif;
 }
 .NavInnerCont {
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px red solid;
+  /* border: 1px red solid; */
   width: 70%;
   margin: auto;
 }
 .NavInnerCont > div {
-  border: 1px red solid;
+  /* border: 1px red solid; */
   width: 22%;
 }
 .NavInnerCont > div:nth-child(2) {
-  border: 1px red solid;
+  /* border: 1px red solid; */
   width: 35%;
 }
 
 .NavLogodiv > img {
   width: 220px;
 }
+.NavLogodiv > img:hover {
+  cursor: pointer;
+}
 
 .Nav_Acc_Cart_div {
   display: flex;
   justify-content: space-around;
-}
-
-hr {
-  border: 1px solid #333;
 }
