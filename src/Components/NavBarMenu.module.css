@@ -1,0 +1,11 @@
+.NavMenMainCont {
+    border: 1px red solid;
+  }
+  .NavMenInnerCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px red solid;
+    width: 70%;
+    margin: auto;
+  }
