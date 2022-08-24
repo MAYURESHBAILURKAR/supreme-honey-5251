@@ -24,12 +24,16 @@ import styles from "./NavBar.module.css";
 
 import { useNavigate } from "react-router-dom";
 import NavBarMenu from "./NavBarMenu";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 const Navbar = () => {
+  const [state, dispatch ,handleLogout]=useContext(AuthContext)
   const navigate = useNavigate();
 
   const handleOnClick = (a) => {
     navigate(a);
   };
+  console.log(state)
   return (
     <div className={styles.NavMainCont}>
       <div className={styles.NavInnerCont}>
@@ -64,7 +68,18 @@ const Navbar = () => {
                   <PopoverHeader>Login / Register</PopoverHeader>
                   <PopoverCloseButton />
                   <PopoverBody bg="#F2F2F2">
-                    <Stack direction="column" spacing={4}>
+
+                    {state.isAuth?<Stack direction="column" spacing={4}>
+                      <Button
+                        backgroundColor="#2E3337"
+                        color="white"
+                        borderRadius={0}
+                        _hover={{ bg: "teal.600" }}
+                        onClick={handleLogout}
+                      >
+                        LOGOUT
+                      </Button>
+                    </Stack>:<Stack direction="column" spacing={4}>
                       <Button
                         backgroundColor="#2E3337"
                         color="white"
@@ -82,10 +97,37 @@ const Navbar = () => {
                         borderColor="#2E3337"
                         color="#2E3337"
                         _hover={{ bg: "teal.50" }}
+                        onClick={() => handleOnClick("/register")}
                       >
                         REGISTER
                       </Button>
-                    </Stack>
+                    </Stack>}
+
+
+
+                    {/* <Stack direction="column" spacing={4}>
+                      <Button
+                        backgroundColor="#2E3337"
+                        color="white"
+                        borderRadius={0}
+                        _hover={{ bg: "teal.600" }}
+                        onClick={() => handleOnClick("/login")}
+                      >
+                        LOGIN
+                      </Button>
+                      <Button
+                        colorScheme="blue"
+                        borderRadius={0}
+                        bg="white"
+                        border="1px"
+                        borderColor="#2E3337"
+                        color="#2E3337"
+                        _hover={{ bg: "teal.50" }}
+                        onClick={() => handleOnClick("/register")}
+                      >
+                        REGISTER
+                      </Button>
+                    </Stack> */}
                   </PopoverBody>
                   <PopoverFooter>
                     <Stack direction="column" spacing={4}>

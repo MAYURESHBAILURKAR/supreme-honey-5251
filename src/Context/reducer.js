@@ -15,6 +15,13 @@ function Reducer(state, action) {
         isError: true,
       };
     }
+    case "Logout": {
+      return {
+        ...state,
+        isAuth: false,
+        token: null,
+      };
+    }
     case "get_product": {
       return {
         ...state,

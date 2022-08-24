@@ -18,9 +18,16 @@ export default function AuthContextProvider({ children }) {
   const [state, dispatch] = useReducer(Reducer, initState);
 
   // console.log(state)
-
+  const handleLogout = () => {
+    // console.log("hey")
+    dispatch({
+      type: "Logout",
+      token: null,
+      isAuth: false,
+    });
+  };
   return (
-    <AuthContext.Provider value={[state, dispatch]}>
+    <AuthContext.Provider value={[state, dispatch,handleLogout]}>
       {children}
     </AuthContext.Provider>
   );

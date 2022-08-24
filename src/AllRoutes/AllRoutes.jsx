@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import LoginPage from "../Pages/Login";
 import Register from "../Pages/Register";
+import SmartSplurgesPage from "../Pages/SmartSplurgesPage";
 
 const AllRoutes = () => {
   return (
@@ -9,6 +10,7 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/best-of-skinstore/smart-splurges" element={<SmartSplurgesPage />} />
     </Routes>
   );
 };

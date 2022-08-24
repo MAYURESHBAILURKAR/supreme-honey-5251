@@ -111,6 +111,7 @@ const NavBarMenu = () => {
   const BestOfSkin = [
     {
       name: "Smart Splurges",
+      location:"/best-of-skinstore/smart-splurges"
     },
     {
       name: "Budget Friendly Finds",
@@ -552,7 +553,7 @@ const NavBarMenu = () => {
                             color="#2E3337"
                             borderRadius={0}
                             _hover={{ bg: "#F2F2F2" }}
-                            onClick={() => handleOnClick()}
+                            onClick={() => handleOnClick(el.location)}
                             key={el.name}
                             size="sm"
                             justifyContent="flex-start"
