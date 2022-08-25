@@ -31,7 +31,7 @@ const Footer = () => {
                 color="white"
                 borderRadius={0}
                 _hover={{ bg: "teal.600" }}
-                onClick={() => handleOnClick("/login")}
+                onClick={() => handleOnClick("/register")}
                 size="sm"
               >
                 SIGN UP
