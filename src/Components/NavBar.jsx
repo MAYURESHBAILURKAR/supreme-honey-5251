@@ -26,8 +26,17 @@ import { useNavigate } from "react-router-dom";
 import NavBarMenu from "./NavBarMenu";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import { useStateContext } from "../Context/CartContext";
+import CartDropDown from "./CartDropDown";
 const Navbar = () => {
   const [state, dispatch, handleLogout] = useContext(AuthContext);
+  const {
+    qty,
+    cartItems,
+    totalPrice,
+    totalQuantities,
+    toggleCartItemQuantity,
+  } = useStateContext();
   const navigate = useNavigate();
 
   const handleOnClick = (a) => {
@@ -105,30 +114,6 @@ const Navbar = () => {
                         </Button>
                       </Stack>
                     )}
-
-                    {/* <Stack direction="column" spacing={4}>
-                      <Button
-                        backgroundColor="#2E3337"
-                        color="white"
-                        borderRadius={0}
-                        _hover={{ bg: "teal.600" }}
-                        onClick={() => handleOnClick("/login")}
-                      >
-                        LOGIN
-                      </Button>
-                      <Button
-                        colorScheme="blue"
-                        borderRadius={0}
-                        bg="white"
-                        border="1px"
-                        borderColor="#2E3337"
-                        color="#2E3337"
-                        _hover={{ bg: "teal.50" }}
-                        onClick={() => handleOnClick("/register")}
-                      >
-                        REGISTER
-                      </Button>
-                    </Stack> */}
                   </PopoverBody>
                   <PopoverFooter>
                     <Stack direction="column" spacing={4}>
@@ -151,6 +136,9 @@ const Navbar = () => {
                 >
                   <BsMinecartLoaded size="22px" />
                   Cart
+                  {cartItems < 1 ? null : (
+                    <p className={styles.Nav_Cart_CountP}>{totalQuantities}</p>
+                  )}
                 </Button>
               </PopoverTrigger>
               <Portal>
@@ -159,9 +147,14 @@ const Navbar = () => {
                   <PopoverHeader>Cart</PopoverHeader>
                   <PopoverCloseButton />
                   <PopoverBody>
-                    <Stack direction="column" spacing={4}>
+                    {cartItems < 1 ? (
                       <Text>There are currently no items in your Cart</Text>
-                    </Stack>
+                    ) : (
+                      <CartDropDown />
+                    )}
+                    {/* <Stack direction="column" spacing={4}>
+                      <Text>There are currently no items in your Cart</Text>
+                    </Stack> */}
                   </PopoverBody>
                   <PopoverFooter>
                     <Stack direction="column" spacing={4}>
