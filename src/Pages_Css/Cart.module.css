@@ -34,7 +34,7 @@
 
 .Cart_innerMainCon {
   display: flex;
-  border-radius: 1px red solid;
+  /* border-radius: 1px red solid; */
 }
 
 .Cart_innerMainCon > div:nth-child(2) {

@@ -163,7 +163,7 @@ export const CartStateContext = ({ children }) => {
   let index;
 
 
-  console.log(cartItems)
+//   console.log(cartItems)
 
 
   const onAdd = (product, quantity) => {

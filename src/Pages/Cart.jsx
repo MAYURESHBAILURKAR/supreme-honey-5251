@@ -23,6 +23,7 @@ import { HiMinusSm, HiPlusSm } from "react-icons/hi";
 import { TiDeleteOutline } from "react-icons/ti";
 import CartGiftSection from "../Components/CartGiftSection";
 import WhatpeopleArebuyingSec from "../Components/HomeElements/WhatpeopleArebuyingSec";
+import Footer from "../Components/Footer";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -238,6 +239,9 @@ const CartPage = () => {
       </div>
       <div className={styles.WhatpeopleArebuyingSec_com}>
         <WhatpeopleArebuyingSec />
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   );

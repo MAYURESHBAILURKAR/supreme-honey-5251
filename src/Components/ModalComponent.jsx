@@ -16,7 +16,7 @@ import styles from "./ModalComponent.Module.css";
 
 function ProductPageModal({ isOpen, setIsOpen, item }) {
   //   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const CustomerAlsoBrought = [
     {
@@ -41,7 +41,7 @@ function ProductPageModal({ isOpen, setIsOpen, item }) {
   const onClose = () => {
     setIsOpen(false);
   };
-  console.log(item);
+  // console.log(item);
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
@@ -107,7 +107,7 @@ function ProductPageModal({ isOpen, setIsOpen, item }) {
                     borderRadius={0}
                     _hover={{ bg: "teal.600" }}
                     w="full"
-                    onClick={()=>navigate("/cart")}
+                    onClick={() => navigate("/cart")}
                   >
                     VIEW CART
                   </Button>
