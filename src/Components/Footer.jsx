@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.footer_bottomCont}>
-          <div className={styles.footer_bottomContDiv1}>
+          <div className={styles.footer_bottomContDiv}>
             <hr />
             <p>Help & Information</p>
             <div>
@@ -63,7 +63,7 @@ const Footer = () => {
               <p>Cookie Settings</p>
             </div>
           </div>
-          <div className={styles.footer_bottomContDiv2}>
+          <div className={styles.footer_bottomContDiv}>
             <hr />
             <p>About SkinStore</p>
             <div>
@@ -77,7 +77,7 @@ const Footer = () => {
               <p>Join SkinStore Experts</p>
             </div>
           </div>
-          <div className={styles.footer_bottomContDiv3}>
+          <div className={styles.footer_bottomContDiv}>
             <hr />
             <p>Legal</p>
             <div>
@@ -87,7 +87,7 @@ const Footer = () => {
               <p>Modern Slavery Statement</p>
             </div>
           </div>
-          <div className={styles.footer_bottomContDiv4}>
+          <div className={styles.footer_bottomContDiv}>
             <hr />
             <p>How To Contact Us</p>
             <div>
@@ -97,6 +97,13 @@ const Footer = () => {
           </div>
         </div>
         <hr />
+        <div className={styles.footer_bottomLogoDiv}>
+          <img
+            src="https://s1.thcdn.com/enterprise/assets/skstr-global-113e023e-ecc9-45df-abad-eb92ce1956c9-logo-default.svg"
+            alt=""
+            onClick={() => handleOnClick("/")}
+          />
+        </div>
       </div>
     </div>
   );

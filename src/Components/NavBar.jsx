@@ -27,13 +27,13 @@ import NavBarMenu from "./NavBarMenu";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 const Navbar = () => {
-  const [state, dispatch ,handleLogout]=useContext(AuthContext)
+  const [state, dispatch, handleLogout] = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleOnClick = (a) => {
     navigate(a);
   };
-  console.log(state)
+  console.log(state);
   return (
     <div className={styles.NavMainCont}>
       <div className={styles.NavInnerCont}>
@@ -68,42 +68,43 @@ const Navbar = () => {
                   <PopoverHeader>Login / Register</PopoverHeader>
                   <PopoverCloseButton />
                   <PopoverBody bg="#F2F2F2">
-
-                    {state.isAuth?<Stack direction="column" spacing={4}>
-                      <Button
-                        backgroundColor="#2E3337"
-                        color="white"
-                        borderRadius={0}
-                        _hover={{ bg: "teal.600" }}
-                        onClick={handleLogout}
-                      >
-                        LOGOUT
-                      </Button>
-                    </Stack>:<Stack direction="column" spacing={4}>
-                      <Button
-                        backgroundColor="#2E3337"
-                        color="white"
-                        borderRadius={0}
-                        _hover={{ bg: "teal.600" }}
-                        onClick={() => handleOnClick("/login")}
-                      >
-                        LOGIN
-                      </Button>
-                      <Button
-                        colorScheme="blue"
-                        borderRadius={0}
-                        bg="white"
-                        border="1px"
-                        borderColor="#2E3337"
-                        color="#2E3337"
-                        _hover={{ bg: "teal.50" }}
-                        onClick={() => handleOnClick("/register")}
-                      >
-                        REGISTER
-                      </Button>
-                    </Stack>}
-
-
+                    {state.isAuth ? (
+                      <Stack direction="column" spacing={4}>
+                        <Button
+                          backgroundColor="#2E3337"
+                          color="white"
+                          borderRadius={0}
+                          _hover={{ bg: "teal.600" }}
+                          onClick={handleLogout}
+                        >
+                          LOGOUT
+                        </Button>
+                      </Stack>
+                    ) : (
+                      <Stack direction="column" spacing={4}>
+                        <Button
+                          backgroundColor="#2E3337"
+                          color="white"
+                          borderRadius={0}
+                          _hover={{ bg: "teal.600" }}
+                          onClick={() => handleOnClick("/login")}
+                        >
+                          LOGIN
+                        </Button>
+                        <Button
+                          colorScheme="blue"
+                          borderRadius={0}
+                          bg="white"
+                          border="1px"
+                          borderColor="#2E3337"
+                          color="#2E3337"
+                          _hover={{ bg: "teal.50" }}
+                          onClick={() => handleOnClick("/register")}
+                        >
+                          REGISTER
+                        </Button>
+                      </Stack>
+                    )}
 
                     {/* <Stack direction="column" spacing={4}>
                       <Button
@@ -143,7 +144,11 @@ const Navbar = () => {
           <div className={styles.Nav_Cart_div}>
             <Popover trigger="hover" placement="bottom-start">
               <PopoverTrigger>
-                <Button bg="white" _hover={{ bg: "#F2F2F2" }}>
+                <Button
+                  bg="white"
+                  _hover={{ bg: "#F2F2F2" }}
+                  onClick={() => navigate("/cart")}
+                >
                   <BsMinecartLoaded size="22px" />
                   Cart
                 </Button>

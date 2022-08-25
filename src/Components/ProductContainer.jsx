@@ -4,9 +4,12 @@ import { Button } from "@chakra-ui/react";
 import styles from "./ProductContainer.module.css";
 import { MdStarRate } from "react-icons/md";
 import ProductPageModal from "./ModalComponent";
+import { useStateContext } from "../Context/CartContext";
 const ProductContainer = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedData, setSelectedData] = useState({});
+
+  const { decQty, incQty, qty, onAdd } = useStateContext();
 
   const handleClick = (item) => {
     setIsModalVisible(true);
@@ -24,45 +27,52 @@ const ProductContainer = ({ data }) => {
             <div
               className={styles.ProductCon_ProdDiv}
               key={Math.floor(Math.random() * 100000000000)}
-              onClick={() => handleClick(el)}
             >
-              <img src={el.imageURL} alt="" />
-              <p className={styles.ProductCon_ProdName}>
-                {el.productBlock_productName}
-              </p>
-              <div className={styles.ProductCon_panBannerTextDiv}>
-                <p>{el.papBanner_text}</p>
-              </div>
-              <div className={styles.ProductCon_RatingDiv}>
-                <Flex display="flex">
-                  <MdStarRate color="gold" />
-                  <MdStarRate color="gold" />
-                  <MdStarRate color="gold" />
-                  <MdStarRate color="gold" />
-                  <MdStarRate color="gold" />
-                  <p
-                    className={styles.ProductCon_RatingText}
-                  >{`(${el.productBlock_reviewCount})`}</p>
-                </Flex>
-              </div>
-              <div className={styles.ProductCon_priceDiv}>
-                <p>{` $ ${el.productBlock_priceValue} `}</p>
-              </div>
-              <Button
-                colorScheme="blue"
-                borderRadius={0}
-                bg="#2E3337"
-                border="1px"
-                borderColor="#2E3337"
-                color="white"
-                _hover={{ bg: "teal.300" }}
-                size="sm"
-                padding="20px 10px"
-                marginTop="15px"
-                w="full"
+              <div
+                className={styles.ProductCon_ProdDiv}
+                onClick={() => handleClick(el)}
               >
-                QUICK BUY
-              </Button>
+                <img src={el.imageURL} alt="" />
+                <p className={styles.ProductCon_ProdName}>
+                  {el.productBlock_productName}
+                </p>
+                <div className={styles.ProductCon_panBannerTextDiv}>
+                  <p>{el.papBanner_text}</p>
+                </div>
+                <div className={styles.ProductCon_RatingDiv}>
+                  <Flex display="flex">
+                    <MdStarRate color="gold" />
+                    <MdStarRate color="gold" />
+                    <MdStarRate color="gold" />
+                    <MdStarRate color="gold" />
+                    <MdStarRate color="gold" />
+                    <p
+                      className={styles.ProductCon_RatingText}
+                    >{`(${el.productBlock_reviewCount})`}</p>
+                  </Flex>
+                </div>
+                <div className={styles.ProductCon_priceDiv}>
+                  <p>{` $ ${el.productBlock_priceValue} `}</p>
+                </div>
+              </div>
+              <div>
+                <Button
+                  colorScheme="blue"
+                  borderRadius={0}
+                  bg="#2E3337"
+                  border="1px"
+                  borderColor="#2E3337"
+                  color="white"
+                  _hover={{ bg: "teal.300" }}
+                  size="sm"
+                  padding="20px 10px"
+                  marginTop="15px"
+                  w="full"
+                  onClick={() => onAdd(el, qty)}
+                >
+                  QUICK BUY
+                </Button>
+              </div>
             </div>
           );
         })}

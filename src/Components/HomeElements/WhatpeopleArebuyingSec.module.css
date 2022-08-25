@@ -36,3 +36,7 @@
 
   /* border: 1px red solid; */
 }
+
+.WhatPeopleBuy_ProdproductBlock_priceValueDiv > p {
+  margin-top: 20px;
+}

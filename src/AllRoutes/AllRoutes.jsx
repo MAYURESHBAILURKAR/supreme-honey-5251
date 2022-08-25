@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import CartPage from "../Pages/Cart";
 import Home from "../Pages/Home";
 import LoginPage from "../Pages/Login";
 import Register from "../Pages/Register";
@@ -10,7 +11,11 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/best-of-skinstore/smart-splurges" element={<SmartSplurgesPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route
+        path="/best-of-skinstore/smart-splurges"
+        element={<SmartSplurgesPage />}
+      />
     </Routes>
   );
 };
