@@ -41,7 +41,7 @@ const LoginPage = () => {
         dispatch({
           type: "Login_success",
           token: res.data.token,
-          isAuth: true,
+          // isAuth: true,
         });
         navigate("/");
         console.log(res);
@@ -49,7 +49,7 @@ const LoginPage = () => {
       .catch((err) => {
         dispatch({
           type: "Login_failure",
-          isError: true,
+          // isError: true,
         });
         // alert("TRY AGAIN");
         console.log(err);
@@ -58,6 +58,15 @@ const LoginPage = () => {
   const handleOnClick = (a) => {
     navigate(a);
   };
+
+  const handleAutoLogin = () => {
+    
+    setEmail("eve.holt@reqres.in");
+    setPassword("cityslicka");
+  };
+
+
+
   console.log(state);
   return (
     <div className={styles.loginPage_LogoMainOutCon}>
@@ -148,6 +157,7 @@ const LoginPage = () => {
                 borderColor="#2E3337"
                 _hover={{ backgroundColor: "#f2f2f2", border: "none" }}
                 padding="25px"
+                onClick={handleAutoLogin}
               >
                 <FcGoogle className={styles.reacticons} />
                 Google

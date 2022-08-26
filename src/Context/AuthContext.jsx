@@ -8,6 +8,7 @@ export const AuthContext = React.createContext();
 const initState = {
   isAuth: false,
   token: null,
+  isName: "",
   isError: false,
   isLoading: false,
   data: [],
@@ -17,17 +18,18 @@ const initState = {
 export default function AuthContextProvider({ children }) {
   const [state, dispatch] = useReducer(Reducer, initState);
 
-  // console.log(state)
+  console.log(state)
   const handleLogout = () => {
     // console.log("hey")
     dispatch({
       type: "Logout",
-      token: null,
-      isAuth: false,
+      // token: null,
+      // isAuth: false,
+      // isName: "",
     });
   };
   return (
-    <AuthContext.Provider value={[state, dispatch,handleLogout]}>
+    <AuthContext.Provider value={[state, dispatch, handleLogout]}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../Pages_Css/Register.module.css";
 import { FcGoogle } from "react-icons/fc";
@@ -18,11 +18,14 @@ import {
 } from "@chakra-ui/react";
 
 import axios from "axios";
+import { AuthContext } from "../Context/AuthContext";
 const Register = () => {
+  const [state, dispatch] = useContext(AuthContext);
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
-  const [state, setState] = useState(false);
+  const [checkstate, setCheckState] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => setShow(!show);
   const handleSubmit = (e) => {
@@ -36,18 +39,33 @@ const Register = () => {
       },
     })
       .then((res) => {
+        // console.log(userName);
+        let name = userName.split(" ");
+
+        dispatch({
+          type: "Register_success",
+          isName: name[0],
+          // isAuth: true,
+        });
         navigate("/login");
         console.log(res);
       })
       .catch((err) => {
         // alert("TRY AGAIN");
-        setState(true);
+        setCheckState(true);
         console.log(err);
       });
   };
   const handleOnClick = (a) => {
     navigate(a);
   };
+
+  const handleAutoRegister = () => {
+    setUserName("MAYURESH BAILURKAR");
+    setEmail("eve.holt@reqres.in");
+    setPassword("pistol");
+  };
+
   return (
     <div>
       <div className={styles.registerPage_LogoMainOutCon}>
@@ -93,6 +111,7 @@ const Register = () => {
                 _hover={{ backgroundColor: "#f2f2f2", border: "none" }}
                 padding="25px"
                 w="full"
+                onClick={handleAutoRegister}
               >
                 <FcGoogle className={styles.reacticons} />
                 Google
@@ -106,9 +125,14 @@ const Register = () => {
               Or create an email account
             </p>
             <form onSubmit={handleSubmit}>
-              <FormControl isInvalid={state} isRequired>
+              <FormControl isInvalid={checkstate} isRequired>
                 <FormLabel>Full Name</FormLabel>
-                <Input type="text" placeholder="Enter Full Name" />
+                <Input
+                  type="text"
+                  placeholder="Enter Full Name"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
                 <FormLabel>Email address</FormLabel>
                 <Input
                   type="email"
@@ -116,7 +140,7 @@ const Register = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter Email"
                 />
-                {!state ? (
+                {!checkstate ? (
                   <FormHelperText marginTop="-10px" marginBottom="20px">
                     Enter the registered Email.
                   </FormHelperText>
@@ -125,7 +149,7 @@ const Register = () => {
                 )}
                 <FormLabel>Confirm Email address</FormLabel>
                 <Input type="email" placeholder="Enter Email" />
-                {!state ? (
+                {!checkstate ? (
                   <FormHelperText marginTop="-10px" marginBottom="20px">
                     Confirm Email.
                   </FormHelperText>
@@ -133,7 +157,7 @@ const Register = () => {
                   <FormErrorMessage>Invalid Email.</FormErrorMessage>
                 )}
               </FormControl>
-              <FormControl isInvalid={state} isRequired>
+              <FormControl isInvalid={checkstate} isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
@@ -148,7 +172,7 @@ const Register = () => {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
-                {!state.isError ? (
+                {!checkstate ? (
                   <FormHelperText marginTop="-10px" marginBottom="20px">
                     Enter the correct password.
                   </FormHelperText>
@@ -167,7 +191,7 @@ const Register = () => {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
-                {!state ? (
+                {!checkstate ? (
                   <FormHelperText marginTop="-10px" marginBottom="30px">
                     Confirm password.
                   </FormHelperText>

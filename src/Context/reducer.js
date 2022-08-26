@@ -7,6 +7,12 @@ function Reducer(state, action) {
         token: action.token,
       };
     }
+    case "Register_success": {
+      return {
+        ...state,
+        isName: action.isName,
+      };
+    }
     case "Login_failure": {
       return {
         ...state,
@@ -20,6 +26,7 @@ function Reducer(state, action) {
         ...state,
         isAuth: false,
         token: null,
+        isName: "",
       };
     }
     case "get_product": {

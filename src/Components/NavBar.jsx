@@ -79,15 +79,23 @@ const Navbar = () => {
                   <PopoverBody bg="#F2F2F2">
                     {state.isAuth ? (
                       <Stack direction="column" spacing={4}>
-                        <Button
-                          backgroundColor="#2E3337"
-                          color="white"
-                          borderRadius={0}
-                          _hover={{ bg: "teal.600" }}
-                          onClick={handleLogout}
-                        >
-                          LOGOUT
-                        </Button>
+                        <div className={styles.Nav_AccLogoutBtn_div}>
+                          <Text>
+                            {state.isName == ""
+                              ? "Welcome"
+                              : `Hello ${state.isName}`}
+                          </Text>
+                          <Button
+                            backgroundColor="#2E3337"
+                            color="white"
+                            borderRadius={0}
+                            _hover={{ bg: "teal.600" }}
+                            onClick={handleLogout}
+                            size="sm"
+                          >
+                            LOGOUT
+                          </Button>
+                        </div>
                       </Stack>
                     ) : (
                       <Stack direction="column" spacing={4}>
@@ -117,9 +125,22 @@ const Navbar = () => {
                   </PopoverBody>
                   <PopoverFooter>
                     <Stack direction="column" spacing={4}>
-                      <Text>Wishlist</Text>
-                      <Text>Your Order</Text>
-                      <Text>Your Referrals</Text>
+                      <div className={styles.Nav_AccFooter_div}>
+                        {state.isAuth && (
+                          <Text className={styles.Nav_AccFooter_Text}>
+                            My Account
+                          </Text>
+                        )}
+                        <Text className={styles.Nav_AccFooter_Text}>
+                          Wishlist
+                        </Text>
+                        <Text className={styles.Nav_AccFooter_Text}>
+                          Your Order
+                        </Text>
+                        <Text className={styles.Nav_AccFooter_Text}>
+                          Your Referrals
+                        </Text>
+                      </div>
                     </Stack>
                   </PopoverFooter>
                 </PopoverContent>
