@@ -10,20 +10,29 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Select,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Stack,
 } from "@chakra-ui/react";
 import SideSortBar from "../Components/SideSortBar";
 import styles from "../Pages_Css/SmartSplurgePage.module.css";
 import Footer from "../Components/Footer";
+import { useSearchParams } from "react-router-dom";
 const SmartSplurgesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
   const [limit, setLimit] = useState(30);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
   const [order, setOrder] = useState("ASC");
   const [sort, setSort] = useState("productBlock_priceValue");
   const [Filter, setFilter] = useState("");
   const [FilterTitle, setFilterTitle] = useState("");
+  const [isLoading, setIsloading] = useState(true);
 
   const GetData = async () => {
+    setSearchParams({ page });
+    setIsloading(true);
     let res = await fetchData({
       page,
       limit,
@@ -33,6 +42,7 @@ const SmartSplurgesPage = () => {
       Filter,
     });
     setData(res);
+    setIsloading(false);
     console.log(res);
   };
   useEffect(() => {
@@ -83,7 +93,9 @@ const SmartSplurgesPage = () => {
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="/best-of-skinstore/smart-splurges">Smart Splurges</BreadcrumbLink>
+              <BreadcrumbLink href="/best-of-skinstore/smart-splurges">
+                Smart Splurges
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
         </div>
@@ -121,7 +133,21 @@ const SmartSplurgesPage = () => {
                 <Pagination current={page} onChange={handlePage} />
               </div>
             </div>
-            <ProductContainer data={data} pageTitle={PageTitle} />
+            {isLoading ? (
+              <Stack>
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+                <Skeleton height="280px" width="1150px" />
+              </Stack>
+            ) : (
+              <ProductContainer data={data} pageTitle={PageTitle} />
+            )}
             <Pagination current={page} onChange={handlePage} />
           </div>
         </div>
