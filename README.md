@@ -1,7 +1,7 @@
 # supreme-honey-5251
 ### For Educational And Learning Purpose*
 
-Hey👋, this is the cloning of one of the best E-commerce website named “SkinStore.com”. This project was assigned to me in construct week .SkinStore.com a E-commerce website where they sell cosmetics skin products as well as provide hair and skincare treatment.
+Hey👋, this is the clone of one of the best E-commerce website named “SkinStore.com”. This project was assigned to me in construct week .SkinStore.com a E-commerce website where they sell cosmetics skin products as well as provide hair and skincare treatment.
 
 ## Technology Stack Used
 - REACT JS
