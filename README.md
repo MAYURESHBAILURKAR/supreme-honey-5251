@@ -13,8 +13,11 @@ Hey👋, this is the clone of one of the best E-commerce website named “SkinSt
 https://www.skinstore.com/
 
 
-## Deployed Link :
+
+## Deployed Link : 🌟
 Site Deployed on Vercel [Click Here](https://skinstore-sigma.vercel.app/).
+
+
 
 ## Snapshots 📷
 - **Landing page (Home page)**
